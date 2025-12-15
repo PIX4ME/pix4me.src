@@ -1,0 +1,103 @@
+<!--
+  Copyright (c) 2025–present
+  PIX4ME Authors
+
+  All rights reserved.
+-->
+  
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>PIX4ME</title>
+    <link rel="stylesheet" href='css/style.css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <div id="loading">
+      <img id="loadingLogo" class="loading-logo" src="assets/img/logoWhite.png">
+      <div class="loader"></div>
+    </div>
+
+    <button id="menuBtn" onclick="toggleAbout()">≡</button>
+
+    <div class="themeBar">
+      <button class="themeBtn" onclick="setTheme(false)">🌑</button>
+      <button class="themeBtn" onclick="setTheme(true)">☀️</button>
+    </div>
+
+    <div class="app">
+      <div class="card">
+
+        <img id="logo" class="logo" src="assets/img/logoWhite.png">
+
+        <div id="form">
+          <h3>Cobrar um PIX nunca foi tão fácil.</h3>
+          <input id="pixKey" placeholder="Chave Pix"
+            oninput="formatPixKey(this)">
+          <input id="receiver" placeholder="Recebedor">
+          <input id="city" placeholder="Cidade" maxlength="15"
+            oninput="formatCity(this)">
+          <input id="amount" placeholder="Valor (ex: 25,00)"
+            oninput="formatAmount(this)">
+          <button onclick="generate()">Gerar cobrança</button>
+        </div>
+
+        <div id="view" style="display:none">
+
+          <div id="payText"
+            style="font-size:18px;font-weight:800;margin-bottom:6px">
+            PAGUE R$ 0,00 para —
+          </div>
+
+          <div id="countdown"
+            style="font-size:14px;color:var(--muted);margin-bottom:12px">
+            Expira em 15:00
+          </div>
+
+          <div class="qrBox"><img id="qr"></div>
+
+          <b>Chave Pix</b>
+          <div class="keyBox" id="viewKey"></div>
+
+          <b>Código de cobrança</b>
+          <div class="keyBox" id="pixCode"></div>
+
+          <button onclick="copyPix()">Copiar código PIX</button>
+        </div>
+
+        <div id="notFound" style="display:none">
+          <div class="errorTitle" id="errorTitle"></div>
+          <div class="errorText" id="nfText"></div>
+          <button onclick="openWebsite()">Criar nova cobrança</button>
+        </div>
+      </div>
+
+      <div id="aboutModal" onclick="closeAbout(event)">
+        <div class="aboutCard">
+          <h3>Sobre o Pix4me</h3>
+          <p>
+              O Pix4me é uma plataforma desenvolvida para facilitar a geração de cobranças via PIX de forma rápida, prática e segura.
+              Com ele, você pode criar um código de pagamento em poucos segundos, sem necessidade de cadastro, downloads ou
+              processos complexos.
+          </p>
+
+          <a href="https://github.com/pix4me/pix4me.src/">Código-Fonte</a>
+          <a>-</a>
+          <a href="https://pix4me.github.io/wiki">Guia de Uso.</a>
+          <button onclick="toggleAbout()">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="javascriptFiles/variables.js" defer></script>
+    <script src="javascriptFiles/theme.js" defer></script>
+    <script src="javascriptFiles/validators.js" defer></script>
+    <script src="javascriptFiles/formatters.js" defer></script>
+    <script src="javascriptFiles/pix.js" defer></script>
+    <script src="javascriptFiles/ui.js" defer></script>
+    <script src="javascriptFiles/scroll.js" defer></script>
+    <script src="javascriptFiles/app.js" defer></script>
+  </body>
+</html>

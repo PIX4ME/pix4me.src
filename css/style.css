@@ -1,0 +1,277 @@
+/*
+ * Copyright (c) 2025–present
+ * PIX4ME Authors
+ *
+ * All rights reserved.
+*/
+
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --muted: #999;
+  --border: #222;
+  --btn: #fff;
+  --btnText: #000;
+}
+.light {
+  --bg: #f4f4f4;
+  --fg: #000;
+  --muted: #666;
+  --border: #ddd;
+  --btn: #000;
+  --btnText: #fff;
+}
+
+@font-face {
+  font-family: "Raleway-Light";
+  src: url("../assets/fonts/Raleway-Light.ttf");
+}
+
+@font-face {
+  font-family: "Raleway-Bold";
+  src: url("../assets/fonts/Raleway-Bold.ttf");
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out,
+    border-color 0.6s ease-in-out;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Raleway-Light";
+  min-height: 100vh;
+}
+
+#loading {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  z-index: 999;
+
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.loading-logo {
+  width: 600px;
+  height: auto;
+}
+
+.loader {
+  width: 45px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#ffffff 0 0);
+  background: var(--c), var(--c), var(--c);
+  animation: l18-1 1s infinite, l18-2 1s infinite;
+}
+
+@keyframes l18-1 {
+  0%,
+  100% {
+    background-size: 20% 100%;
+  }
+  33%,
+  66% {
+    background-size: 20% 20%;
+  }
+}
+
+@keyframes l18-2 {
+  0%,
+  33% {
+    background-position: 0 0, 50% 50%, 100% 100%;
+  }
+  66%,
+  100% {
+    background-position: 100% 0, 50% 50%, 0 100%;
+  }
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  text-align: center;
+}
+
+.logo {
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+}
+
+button {
+  background: var(--btn);
+  color: var(--btnText);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qrBox {
+  background: #fff;
+  padding: 14px;
+  border-radius: 18px;
+  width: 260px;
+  margin: 20px auto;
+}
+
+.qrBox img {
+  width: 100%;
+}
+
+.keyBox {
+  border: 1px dashed var(--border);
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  word-break: break-all;
+  margin-top: 6px;
+}
+
+.themeBar {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.themeBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  border: none;
+  background: transparent;
+
+  box-shadow: none;
+  outline: none;
+
+  font-size: 18px;
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.themeBtn:focus,
+.themeBtn:active {
+  background: transparent;
+  box-shadow: none;
+}
+
+.errorTitle {
+  font-family: "Raleway-Bold";
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.errorText {
+  color: var(--muted);
+  margin: 10px 0 20px;
+}
+
+#menuBtn {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+
+  width: 56px;
+  height: 56px;
+
+  background: var(--bg);
+  color: var(--fg);
+
+  font-size: 28px;
+  font-weight: 800;
+
+  cursor: pointer;
+  z-index: 100;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+#aboutModal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+  z-index: 200;
+}
+
+#aboutModal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.aboutCard {
+  background: var(--bg);
+  color: var(--fg);
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  padding: 24px;
+  max-width: 320px;
+  width: 90%;
+
+  text-align: center;
+
+  transform: translateY(20px) scale(0.96);
+  opacity: 0;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+#aboutModal.active .aboutCard {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.aboutCard p {
+  color: var(--muted);
+  margin: 12px 0 20px;
+}
+
+.aboutCard button {
+  background: var(--btn);
+  color: var(--btnText);
+}
